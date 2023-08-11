@@ -1,18 +1,30 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:munoncode_portfolio/scripts/helpful_scripts.dart';
+import 'package:munoncode_portfolio/widgets/widgets.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AppCard extends StatelessWidget {
   String title;
   double revenue;
   int downloads;
   String imageUrl;
-
+  String buttonText;
+  IconData customIcon;
+  bool captureEmail;
+  String url;
   AppCard(
       {required this.title,
       required this.revenue,
       this.downloads = -1,
       required this.imageUrl,
+      this.buttonText = "Ver",
+      this.customIcon = Icons.monetization_on,
+      this.captureEmail = false,
+      this.url = "",
       super.key});
-
+  final TextEditingController _emailController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,10 +33,12 @@ class AppCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.red,
         borderRadius: BorderRadius.circular(20),
-        image: DecorationImage(
-          image: NetworkImage(imageUrl),
-          fit: BoxFit.cover,
-        ),
+        image: imageUrl == ""
+            ? null
+            : DecorationImage(
+                image: NetworkImage(imageUrl),
+                fit: BoxFit.cover,
+              ),
       ),
       child: Container(
           height: 250,
@@ -53,6 +67,7 @@ class AppCard extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.center,
                   child: Container(
+                    padding: const EdgeInsets.only(bottom: 50.0),
                     child: Text(
                       title,
                       textAlign: TextAlign.center,
@@ -62,7 +77,7 @@ class AppCard extends StatelessWidget {
                         shadows: [
                           Shadow(
                             color: Colors.black,
-                            offset: Offset(0, 4.0),
+                            offset: Offset(0, 6.0),
                           ),
                         ],
                         fontWeight: FontWeight.bold,
@@ -92,7 +107,7 @@ class AppCard extends StatelessWidget {
                           Row(
                             children: [
                               Icon(
-                                Icons.monetization_on,
+                                customIcon,
                                 size: 20,
                                 color: Colors.green,
                               ),
@@ -124,8 +139,86 @@ class AppCard extends StatelessWidget {
                           ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.purple),
-                              onPressed: () {},
-                              child: Text("Ver",
+                              onPressed: () {
+                                if (captureEmail) {
+                                  showDialog(
+                                      context: context,
+                                      builder: (context) {
+                                        return AlertDialog(
+                                          title: Text(title),
+                                          content: Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              Text(
+                                                "Tu Correo",
+                                                style: TextStyle(
+                                                  fontSize: 18,
+                                                ),
+                                              ),
+                                              const SizedBox(
+                                                height: 10,
+                                              ),
+                                              Container(
+                                                width: 250,
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 10.0),
+                                                decoration: BoxDecoration(
+                                                  color: Colors.grey
+                                                      .withOpacity(0.3),
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                ),
+                                                child: Form(
+                                                    key: _formKey,
+                                                    child: CustomTextFormField(
+                                                      controller:
+                                                          _emailController,
+                                                    )),
+                                              ),
+                                              const SizedBox(
+                                                height: 10,
+                                              ),
+                                              ElevatedButton(
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                          backgroundColor:
+                                                              Colors.purple),
+                                                  onPressed: () async {
+                                                    if (_formKey.currentState!
+                                                        .validate()) {
+                                                      // Do something with the valid email
+                                                      if (url != "") {
+                                                        await addContactToEmailList(
+                                                                email:
+                                                                    _emailController
+                                                                        .text)
+                                                            .then((val) {
+                                                          launchUrl(
+                                                              Uri.parse(url));
+                                                        });
+                                                      }
+                                                    }
+                                                  },
+                                                  child: Text(
+                                                    "Obtener",
+                                                    style: TextStyle(
+                                                        color: Colors.white),
+                                                  ))
+                                            ],
+                                          ),
+                                          actions: [
+                                            TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text("Cerrar"))
+                                          ],
+                                        );
+                                      });
+                                }
+                              },
+                              child: Text(buttonText,
                                   style: TextStyle(color: Colors.white)))
                         ],
                       ),
