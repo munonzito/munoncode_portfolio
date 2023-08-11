@@ -13,6 +13,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: widget.controller,
       decoration: const InputDecoration(
           hintText: "ejemplo@gmail.com", border: InputBorder.none),
       validator: (value) {

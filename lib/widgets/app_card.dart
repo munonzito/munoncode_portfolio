@@ -204,7 +204,14 @@ class AppCard extends StatelessWidget {
                                                     "Obtener",
                                                     style: TextStyle(
                                                         color: Colors.white),
-                                                  ))
+                                                  )),
+                                              const SizedBox(
+                                                height: 10,
+                                              ),
+                                              Text(
+                                                "(Al hacer click en obtener\n aceptas que te envíe correos)",
+                                                textAlign: TextAlign.center,
+                                              )
                                             ],
                                           ),
                                           actions: [

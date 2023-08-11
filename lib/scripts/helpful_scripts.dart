@@ -5,8 +5,7 @@ import '../secrets.dart';
 String emailListId = "b63ef2a0-33f4-11ee-983b-3155d82a5c55";
 
 Future<void> addContactToEmailList({required String email}) async {
-  final String apiUrl =
-      'https://emailoctopus.com/api/1.6/lists/$emailListId/contacts';
+  final String apiUrl = 'https://munoncode-api.vercel.app/api/addContact';
 
   final Map<String, dynamic> requestData = {
     'api_key': EMAIL_API_KEY,
@@ -26,9 +25,7 @@ Future<void> addContactToEmailList({required String email}) async {
 
   if (response.statusCode == 200) {
     print('Request successful');
-    print('Response: ${response.body}');
   } else {
-    print('Request failed with status code ${response.statusCode}');
-    print('Response: ${response.body}');
+    print('Request failed with status code');
   }
 }
