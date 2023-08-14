@@ -39,6 +39,8 @@ class _HomeState extends State<Home> {
                             customIcon: Icons.attach_money,
                             revenue: 19,
                             downloads: 10,
+                            url:
+                                "https://flycrew.com/munoncode/subscribe/e6118e50df",
                             imageUrl:
                                 "https://media.discordapp.net/attachments/1074418812641882162/1139287790861946910/man_coding_app_square.png?width=616&height=616"),
                         AppCard(
@@ -85,6 +87,8 @@ class _HomeState extends State<Home> {
                       children: [
                         AppCard(
                           title: "Tutor AI",
+                          url:
+                              "https://play.google.com/store/apps/details?id=com.munoncode.ai_tutor_app",
                           revenue: 2000,
                           downloads: 100000,
                           imageUrl:
@@ -92,6 +96,8 @@ class _HomeState extends State<Home> {
                         ),
                         AppCard(
                           title: "Bubble AI",
+                          url:
+                              "https://play.google.com/store/apps/details?id=com.munoncode.bubbleai",
                           revenue: 1.2,
                           downloads: 50,
                           imageUrl:
@@ -99,6 +105,8 @@ class _HomeState extends State<Home> {
                         ),
                         AppCard(
                           title: "ThreadsAI: Contenido Viral IA",
+                          url:
+                              "https://play.google.com/store/apps/details?id=com.munoncode.threadsai",
                           revenue: 0.5,
                           downloads: 18,
                           imageUrl:

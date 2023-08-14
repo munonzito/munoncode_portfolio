@@ -223,6 +223,8 @@ class AppCard extends StatelessWidget {
                                           ],
                                         );
                                       });
+                                } else {
+                                  launchUrl(Uri.parse(url));
                                 }
                               },
                               child: Text(buttonText,
