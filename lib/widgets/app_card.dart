@@ -144,83 +144,87 @@ class AppCard extends StatelessWidget {
                                   showDialog(
                                       context: context,
                                       builder: (context) {
-                                        return AlertDialog(
-                                          title: Text(title),
-                                          content: Column(
-                                            mainAxisSize: MainAxisSize.min,
-                                            children: [
-                                              Text(
-                                                "Tu Correo",
-                                                style: TextStyle(
-                                                  fontSize: 18,
+                                        return SingleChildScrollView(
+                                          child: AlertDialog(
+                                            title: Text(title),
+                                            content: Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                Text(
+                                                  "Tu Correo",
+                                                  style: TextStyle(
+                                                    fontSize: 18,
+                                                  ),
                                                 ),
-                                              ),
-                                              const SizedBox(
-                                                height: 10,
-                                              ),
-                                              Container(
-                                                width: 250,
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                        horizontal: 10.0),
-                                                decoration: BoxDecoration(
-                                                  color: Colors.grey
-                                                      .withOpacity(0.3),
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
+                                                const SizedBox(
+                                                  height: 10,
                                                 ),
-                                                child: Form(
-                                                    key: _formKey,
-                                                    child: CustomTextFormField(
-                                                      controller:
-                                                          _emailController,
-                                                    )),
-                                              ),
-                                              const SizedBox(
-                                                height: 10,
-                                              ),
-                                              ElevatedButton(
-                                                  style:
-                                                      ElevatedButton.styleFrom(
-                                                          backgroundColor:
-                                                              Colors.purple),
-                                                  onPressed: () async {
-                                                    if (_formKey.currentState!
-                                                        .validate()) {
-                                                      // Do something with the valid email
-                                                      if (url != "") {
-                                                        await addContactToEmailList(
-                                                                email:
-                                                                    _emailController
-                                                                        .text)
-                                                            .then((val) {
-                                                          launchUrl(
-                                                              Uri.parse(url));
-                                                        });
+                                                Container(
+                                                  width: 250,
+                                                  padding: const EdgeInsets
+                                                          .symmetric(
+                                                      horizontal: 10.0),
+                                                  decoration: BoxDecoration(
+                                                    color: Colors.grey
+                                                        .withOpacity(0.3),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                  ),
+                                                  child: Form(
+                                                      key: _formKey,
+                                                      child:
+                                                          CustomTextFormField(
+                                                        controller:
+                                                            _emailController,
+                                                      )),
+                                                ),
+                                                const SizedBox(
+                                                  height: 10,
+                                                ),
+                                                ElevatedButton(
+                                                    style: ElevatedButton
+                                                        .styleFrom(
+                                                            backgroundColor:
+                                                                Colors.purple),
+                                                    onPressed: () async {
+                                                      if (_formKey.currentState!
+                                                          .validate()) {
+                                                        // Do something with the valid email
+                                                        if (url != "") {
+                                                          await addContactToEmailList(
+                                                                  email:
+                                                                      _emailController
+                                                                          .text)
+                                                              .then((val) {
+                                                            launchUrl(
+                                                                Uri.parse(url));
+                                                          });
+                                                        }
                                                       }
-                                                    }
+                                                    },
+                                                    child: Text(
+                                                      "Obtener",
+                                                      style: TextStyle(
+                                                          color: Colors.white),
+                                                    )),
+                                                const SizedBox(
+                                                  height: 10,
+                                                ),
+                                                Text(
+                                                  "(Al hacer click en obtener\n aceptas que te envíe correos)",
+                                                  textAlign: TextAlign.center,
+                                                )
+                                              ],
+                                            ),
+                                            actions: [
+                                              TextButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
                                                   },
-                                                  child: Text(
-                                                    "Obtener",
-                                                    style: TextStyle(
-                                                        color: Colors.white),
-                                                  )),
-                                              const SizedBox(
-                                                height: 10,
-                                              ),
-                                              Text(
-                                                "(Al hacer click en obtener\n aceptas que te envíe correos)",
-                                                textAlign: TextAlign.center,
-                                              )
+                                                  child: Text("Cerrar"))
                                             ],
                                           ),
-                                          actions: [
-                                            TextButton(
-                                                onPressed: () {
-                                                  Navigator.pop(context);
-                                                },
-                                                child: Text("Cerrar"))
-                                          ],
                                         );
                                       });
                                 } else {

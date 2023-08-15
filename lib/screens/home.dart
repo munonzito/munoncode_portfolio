@@ -34,11 +34,11 @@ class _HomeState extends State<Home> {
                       runSpacing: 20.0,
                       children: [
                         AppCard(
-                            title: "Comunidad\nPrivada",
+                            title: "Munoncode\nAcademy",
                             buttonText: "Entrar",
                             customIcon: Icons.attach_money,
-                            revenue: 19,
-                            downloads: 10,
+                            revenue: 99,
+                            downloads: 20,
                             url:
                                 "https://flycrew.com/munoncode/subscribe/e6118e50df",
                             imageUrl:
