@@ -61,82 +61,79 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: WebSmoothScroll(
-        controller: _scrollController,
-        child: SingleChildScrollView(
-          physics: const NeverScrollableScrollPhysics(),
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Aprende",
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
+      body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Aprende",
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
                       ),
-                      Wrap(
-                          alignment: WrapAlignment.center,
-                          spacing: 10.0,
-                          runSpacing: 20.0,
-                          children: appCards)
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Mis Aplicaciones",
-                        style: TextStyle(
-                            fontSize: 24, fontWeight: FontWeight.bold),
-                      ),
-                      Wrap(
+                    ),
+                    Wrap(
                         alignment: WrapAlignment.center,
                         spacing: 10.0,
                         runSpacing: 20.0,
-                        children: [
-                          AppCard(
-                            title: "Tutor AI",
-                            url:
-                                "https://play.google.com/store/apps/details?id=com.munoncode.ai_tutor_app",
-                            revenue: 2000,
-                            downloads: 100000,
-                            imageUrl:
-                                "https://play-lh.googleusercontent.com/jGccq1xrZ7XxhCIA3UOfO4mWhcKjRQAHpMoxEeZLZ0lE8RDgmmFVM4Cgo-29wXn4Gm4=w240-h480-rw",
-                          ),
-                          AppCard(
-                            title: "Bubble AI",
-                            url:
-                                "https://play.google.com/store/apps/details?id=com.munoncode.bubbleai",
-                            revenue: 1.2,
-                            downloads: 50,
-                            imageUrl:
-                                "https://play-lh.googleusercontent.com/VlZQHYy0QPxBvokd771jMBBGX9xw3py2Hz2YtNfgOEMSSQ33uLoWw6YDoZyf9oBdaA=w240-h480-rw",
-                          ),
-                          AppCard(
-                            title: "ThreadsAI: Contenido Viral IA",
-                            url:
-                                "https://play.google.com/store/apps/details?id=com.munoncode.threadsai",
-                            revenue: 0.5,
-                            downloads: 18,
-                            imageUrl:
-                                "https://play-lh.googleusercontent.com/jOSwNh-LBNEp2pQHNBoc9FLKdrYADgm3BgWN3CgxbnEzrJVMqb3l0CE_Nc05u9ZJb3o=w240-h480-rw",
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+                        children: appCards)
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Mis Aplicaciones",
+                      style:
+                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    ),
+                    Wrap(
+                      alignment: WrapAlignment.center,
+                      spacing: 10.0,
+                      runSpacing: 20.0,
+                      children: [
+                        AppCard(
+                          title: "Tutor AI",
+                          url:
+                              "https://play.google.com/store/apps/details?id=com.munoncode.ai_tutor_app",
+                          revenue: 2000,
+                          downloads: 100000,
+                          imageUrl:
+                              "https://play-lh.googleusercontent.com/jGccq1xrZ7XxhCIA3UOfO4mWhcKjRQAHpMoxEeZLZ0lE8RDgmmFVM4Cgo-29wXn4Gm4=w240-h480-rw",
+                        ),
+                        AppCard(
+                          title: "Bubble AI",
+                          url:
+                              "https://play.google.com/store/apps/details?id=com.munoncode.bubbleai",
+                          revenue: 1.2,
+                          downloads: 50,
+                          imageUrl:
+                              "https://play-lh.googleusercontent.com/VlZQHYy0QPxBvokd771jMBBGX9xw3py2Hz2YtNfgOEMSSQ33uLoWw6YDoZyf9oBdaA=w240-h480-rw",
+                        ),
+                        AppCard(
+                          title: "ThreadsAI: Contenido Viral IA",
+                          url:
+                              "https://play.google.com/store/apps/details?id=com.munoncode.threadsai",
+                          revenue: 0.5,
+                          downloads: 18,
+                          imageUrl:
+                              "https://play-lh.googleusercontent.com/jOSwNh-LBNEp2pQHNBoc9FLKdrYADgm3BgWN3CgxbnEzrJVMqb3l0CE_Nc05u9ZJb3o=w240-h480-rw",
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
         ),
