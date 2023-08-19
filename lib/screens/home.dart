@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:web_smooth_scroll/web_smooth_scroll.dart';
 import '../widgets/widgets.dart';
 
 class Home extends StatefulWidget {
