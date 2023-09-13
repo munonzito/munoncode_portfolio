@@ -61,7 +61,6 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        physics: NeverScrollableScrollPhysics(),
         child: Center(
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 10.0),
