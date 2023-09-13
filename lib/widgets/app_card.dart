@@ -28,7 +28,7 @@ class AppCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 250,
+      height: 200,
       width: 300,
       margin: const EdgeInsets.symmetric(vertical: 10.0),
       decoration: BoxDecoration(
@@ -147,7 +147,10 @@ class AppCard extends StatelessWidget {
                                       builder: (context) {
                                         return SingleChildScrollView(
                                           child: AlertDialog(
-                                            title: Text(title),
+                                            title: Text(
+                                              title,
+                                              textAlign: TextAlign.center,
+                                            ),
                                             content: Column(
                                               mainAxisSize: MainAxisSize.min,
                                               children: [
